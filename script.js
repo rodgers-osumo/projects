@@ -1,8 +1,9 @@
-const username = 'rodgersmerokaosumo';
+const username = 'chamodperera';
 const maxPages = 2;
 const repoList = document.querySelector('.repo-list');
 const reposSection = document.querySelector('.repos');
 const filterInput = document.querySelector('.filter-repos');
+
 
 // get information from github profile
 const getProfile = async function () {
@@ -24,21 +25,21 @@ getProfile();
 const displayProfile = function (profile) {
     const userInfo = document.querySelector('.user-info');
     userInfo.innerHTML = `
-        <figure>
-            <img alt="user avatar" src=${profile.avatar_url} />
-        </figure>
-        <div>
-            <h2><a href=${profile.blog}><strong>${profile.name}</strong></a></h2>
-            <p>${profile.bio}</p>
-            <p>
-                <strong>Location:</strong> ${profile.location}
-            </p>
-            <p>
-                <strong>@${profile.login} </strong>
-                Repos: ${profile.public_repos}
-                Gists: ${profile.public_gists}
-            </p>
-        </div>
+    <figure>
+        <img class="profile-pic" alt="user avatar" src=${profile.avatar_url} />
+    </figure>
+    <div>
+        <h2><a href=${profile.blog}><strong>${profile.name}</strong></a></h2>
+        <p>${profile.bio}</p>
+        <p>
+            <strong>Location:</strong> ${profile.location}
+        </p>
+        <p>
+            <strong>@${profile.login} </strong>
+            Repos: ${profile.public_repos}
+            Gists: ${profile.public_gists}
+        </p>
+    </div>
     `;
 };
 
@@ -72,14 +73,9 @@ const displayRepos = function (repos) {
         listItem.classList.add('repo');
         listItem.innerHTML = `
             <h3>${repo.name}</h3>
-            <span>${repo.description}</span> <br/><br/>
-            <a href="https://github.com/2KAbhishek?tab=repositories&q=&language=${
-                repo.language
-            }">
-            <span>${devicons[repo.language]}</span> <br />
-            </a>
-            <br />
-            <a class="link-btn" href=${repo.html_url}>View Project</a>`;
+            <p>${repo.description}</p> 
+            <span>${devicons[repo.language]}</span>
+            <a href=${repo.html_url}>View Project</a>`;
         repoList.append(listItem);
     }
 };
@@ -107,8 +103,7 @@ const devicons = {
     'C++': '<i class="devicon-cplusplus-plain colored"></i> C++',
     C: '<i class="devicon-c-plain colored"></i> C',
     Clojure: '<i class="devicon-clojure-plain colored"></i> C',
-    CoffeeScript:
-        '<i class="devicon-coffeescript-plain colored"></i> CoffeeScript',
+    CoffeeScript: '<i class="devicon-coffeescript-plain colored"></i> CoffeeScript',
     Crystal: '<i class="devicon-crystal-plain colored"></i> Crystal',
     CSS: '<i class="devicon-css3-plain colored"></i> CSS',
     Dart: '<i class="devicon-dart-plain colored"></i> Dart',
